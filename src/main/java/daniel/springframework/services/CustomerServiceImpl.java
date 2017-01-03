@@ -1,6 +1,7 @@
 package daniel.springframework.services;
 
 import daniel.springframework.domain.Customer;
+import daniel.springframework.domain.DomainObject;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -9,49 +10,27 @@ import java.util.*;
  * Created by daniel on 1/3/17.
  */
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImpl extends AbstractMapService implements CustomerService {
 
     private Map<Integer, Customer> customers;
 
+    public List<DomainObject> listAllCustomers() { return super.listAll(); }
+
+    @Override
+    public Customer getById(Integer id) { return (Customer) super.getById(id); }
+
+    @Override
+    public Customer saveOrUpdate(Customer domainObject) { return (Customer) super.saveOrUpdate(domainObject); }
+
+    @Override
+    public void delete(Integer id) { super.delete(id); }
+
     public CustomerServiceImpl() {
         super();
-        loadCustomers();
+        loadDomainObjects();
     }
 
-    @Override
-    public List<Customer> listAllCustomers() {
-        return new ArrayList<>(customers.values());
-    }
-
-    @Override
-    public Customer findCustomerById(Integer id) {
-        return customers.get(id);
-    }
-
-    @Override
-    public Customer saveOrUpdateCustomer(Customer customer) {
-        if(customer != null){
-            if(customer.getId() == null){
-                customer.setId(getNextKey());
-            }
-            customers.put(customer.getId(), customer);
-
-            return customer;
-        } else {
-            throw new RuntimeException("Product can't be null");
-        }
-    }
-
-    @Override
-    public void deleteCustomer(Integer id) {
-        customers.remove(id);
-    }
-
-    private Integer getNextKey(){
-        return Collections.max(customers.keySet()) + 1;
-    }
-
-    private void loadCustomers(){
+    protected void loadDomainObjects(){
 
         customers = new HashMap<>();
 

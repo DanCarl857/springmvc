@@ -25,42 +25,42 @@ public class CustomerController {
     @RequestMapping("/customers")
     public String listAllCustomers(Model model){
 
-        model.addAttribute("customers", customerService.listAllCustomers());
-        return "customers";
+        model.addAttribute("customers", customerService.listAll());
+        return "customer/customers";
     }
 
     @RequestMapping("/customer/{id}")
     public String getCustomerById(@PathVariable Integer id, Model model){
 
-        model.addAttribute("customer", customerService.findCustomerById(id));
-        return "customer";
+        model.addAttribute("customer", customerService.getById(id));
+        return "customer/customer";
     }
 
     @RequestMapping("/customer/edit/{id}")
     public String editCustomer(@PathVariable Integer id, Model model){
 
-        model.addAttribute("customer", customerService.findCustomerById(id));
-        return "customerform";
+        model.addAttribute("customer", customerService.getById(id));
+        return "customer/customerform";
     }
 
     @RequestMapping("/customer/new")
     public String newCustomer(Model model){
 
         model.addAttribute("customer", new Customer());
-        return "customerform";
+        return "customer/customerform";
     }
 
     @RequestMapping(value="/customers", method= RequestMethod.POST)
     public String saveOrUpdateCustomer(Customer customer){
-        Customer savedCustomer = customerService.saveOrUpdateCustomer(customer);
-        return "redirect:/customer/" + savedCustomer.getId();
+        Customer savedCustomer = customerService.saveOrUpdate(customer);
+        return "redirect:/customer/customer/" + savedCustomer.getId();
     }
 
     @RequestMapping("customers/delete/{id}")
     public String deleteCustomer(@PathVariable Integer id){
 
-        customerService.deleteCustomer(id);
-        return "redirect:/customers";
+        customerService.delete(id);
+        return "redirect:/customer/customers";
     }
 
 
