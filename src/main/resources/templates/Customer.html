@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+    <title>SpringMVC - List Customers</title>
+    <link href="../static/css/libs/bootstrap.css"
+          th:href="@{/css/libs/bootstrap.css}"
+          rel="stylesheet" media="screen" />
+
+    <script src="../static/js/jquery.js"
+            th:src="@{/js/jquery.js}"></script>
+    <link href="../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h2>Customer</h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Customer Id:</label>
+                    <div class="col-sm-6">
+                        <p class="fomr-control-static" th:text="${customer.id}"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">First Name:</label>
+                    <div class="col-sm-6">
+                        <p class="fomr-control-static" th:text="${customer.firstName}"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Last Name:</label>
+                    <div class="col-sm-6">
+                        <p class="fomr-control-static" th:text="${customer.lastName}"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Phone Number:</label>
+                    <div class="col-sm-6">
+                        <p class="fomr-control-static" th:text="${customer.phoneNumber}"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Email:</label>
+                    <div class="col-sm-6">
+                        <p class="fomr-control-static" th:text="${customer.email}"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Address One:</label>
+                    <div class="col-sm-6">
+                        <p class="fomr-control-static" th:text="${customer.addressLineOne}"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Address Two:</label>
+                    <div class="col-sm-6">
+                        <p class="fomr-control-static" th:text="${customer.addressLineTwo}"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">City:</label>
+                    <div class="col-sm-6">
+                        <p class="fomr-control-static" th:text="${customer.city}"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Phone Number:</label>
+                    <div class="col-sm-6">
+                        <p class="fomr-control-static" th:text="${customer.state}"></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
