@@ -1,7 +1,7 @@
-# Main developer: `Daniel Carlson`
+## Main developer: `Daniel Carlson`
 
 Sample spring mvc project with a touch of bootstrap
 
-# What is included:
+### What is included:
 * Spring MVC
 * Thymleaf
